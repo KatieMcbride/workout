@@ -27,3 +27,5 @@ router.post('/api/workouts', (req, res) =>{
 
 
 module.exports = router;
+
+// Routes are already defined in public folder
