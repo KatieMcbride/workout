@@ -7,13 +7,18 @@ const PORT = process.env.PORT || 3000;
 const db = require("./models");
 
 const app = express();
+const htmlRoute = require("./routes/html");
+const userApiRoute = require("./routes/api");
 
 app.use(logger("dev"));
+app.use(express.static(__dirname + "/public"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(htmlRoute);
+app.use(userApiRoute);
 
-app.use(express.static("public"));
+
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
