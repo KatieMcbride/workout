@@ -22,6 +22,14 @@ app.use(userApiRoute);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
+db.Workout.create({ name: "Workout" })
+  .then(dbWorkout => {
+    console.log(dbWorkout);
+  })
+  .catch(({message}) => {
+    console.log(message);
+  });
+
 
 // Start the server
 app.listen(PORT, () => {
