@@ -7,8 +7,8 @@ const PORT = process.env.PORT || 3000;
 const db = require("./models");
 
 const app = express();
-const htmlRoute = require("./routes/html");
-const userApiRoute = require("./routes/api");
+const htmlRoute = require("./routes/htmlroutes");
+const userApiRoute = require("./routes/apiroutes");
 
 app.use(logger("dev"));
 app.use(express.static(__dirname + "/public"));
