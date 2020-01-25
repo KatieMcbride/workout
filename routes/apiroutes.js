@@ -23,7 +23,7 @@ router.put('/api/workouts/:id', (req, res) =>{
     {
         _id: mongojs.ObjectId(req.params.id)
       },
-    {$set:
+    {$push:
             {
                 exercises: {type: req.body.type,
                     name: req.body.name,
@@ -32,7 +32,6 @@ router.put('/api/workouts/:id', (req, res) =>{
                     weight: req.body.weight,
                     sets: req.body.sets,
                     reps: req.body.reps,
-                    
             }}},(err, result) => {
                 if(err) {
                 throw err;
@@ -42,6 +41,11 @@ router.put('/api/workouts/:id', (req, res) =>{
 });
 
 // DELETE workout /api/workouts
+router.delete('api/workouts/:id', (req,res) =>{
+    Workout.deleteOne({
+        _id: mongojs.ObjectId(req.params.id)
+    });
+});
 
 
 // GET all workouts /api/workouts
