@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const mongojs = require("mongojs");
 const Workout = require('../models/workout');
 
 
@@ -16,15 +17,17 @@ router.post('/api/workouts', (req, res) =>{
 
 // ADD exercises to a work out put route /api/wourkouts/:id
 router.put('/api/workouts/:id', (req, res) =>{
+    console.log(req.body);
+
     Workout.update(
     {
-        _id: req.params.id
+        _id: mongojs.ObjectId(req.params.id)
       },
     {$set:
-            {'type': req.body.type,
-             'name': req.body.name,
-             'distance': req.body.distance,
-             'duration': req.body.duration,
+            {type: req.body.type,
+             name: req.body.name,
+             distance: req.body.distance,
+             duration: req.body.duration,
             }},(err, result) => {
                 if(err) {
                 throw err;
