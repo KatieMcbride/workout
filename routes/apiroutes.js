@@ -40,12 +40,6 @@ router.put('/api/workouts/:id', (req, res) =>{
       });
 });
 
-// DELETE workout /api/workouts
-router.delete('api/workouts/:id', (req,res) =>{
-    Workout.deleteOne({
-        _id: mongojs.ObjectId(req.params.id)
-    });
-});
 
 
 // GET all workouts /api/workouts
@@ -61,8 +55,12 @@ router.get("/api/workouts", (req, res) => {
 
 
 // GET specific workout (get the last 7 workouts) /api/workouts/range
-
+router.get("/api/workouts/range", (req, res) => {
+    Workout.find(
+        { $limit: 7 }
+    );
+  });
 
 module.exports = router;
 
-// Routes are already defined in public folder
+
