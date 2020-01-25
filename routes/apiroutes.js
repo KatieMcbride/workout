@@ -19,16 +19,21 @@ router.post('/api/workouts', (req, res) =>{
 router.put('/api/workouts/:id', (req, res) =>{
     console.log(req.body);
 
-    Workout.update(
+    Workout.updateOne(
     {
         _id: mongojs.ObjectId(req.params.id)
       },
     {$set:
-            {type: req.body.type,
-             name: req.body.name,
-             distance: req.body.distance,
-             duration: req.body.duration,
-            }},(err, result) => {
+            {
+                exercises: {type: req.body.type,
+                    name: req.body.name,
+                    distance: req.body.distance,
+                    duration: req.body.duration,
+                    weight: req.body.weight,
+                    sets: req.body.sets,
+                    reps: req.body.reps,
+                    
+            }}},(err, result) => {
                 if(err) {
                 throw err;
             }
