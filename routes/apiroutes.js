@@ -56,9 +56,15 @@ router.get("/api/workouts", (req, res) => {
 
 // GET specific workout (get the last 7 workouts) /api/workouts/range
 router.get("/api/workouts/range", (req, res) => {
-    Workout.find(
-        { $limit: 7 }
-    );
+    Workout.find({}).limit(7)
+     .then(dbWorkout => {
+        res.json(dbWorkout);
+        console.log("workout range");
+    }).catch(err => {
+        res.json(err);
+        console.log("workout error");
+      });
+    
   });
 
 module.exports = router;
