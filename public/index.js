@@ -29,21 +29,21 @@ async function init() {
       newWorkout.classList.add("")
     }
   }
-  // createANewWorkout();
+  createANewWorkout();
 }
 
-db.Workout.create({ name: "Workout" })
+
+async function createANewWorkout() {
+  db.Workout.create({ name: "Workout" })
 .then(dbWorkout => {
   console.log(dbWorkout);
 })
 .catch(({message}) => {
   console.log(message);
-});
+}); 
 
-async function createANewWorkout() {
-
-  let workout = await API.createWorkout();
-  location.replace(`/exercise?id=${workout.id}`);
+  // let workout = await API.createWorkout();
+  // location.replace(`/exercise?id=${workout.id}`);
 }
 
 function handleWorkoutTypeChange(event) {
