@@ -29,9 +29,19 @@ async function init() {
       newWorkout.classList.add("")
     }
   }
+  // createANewWorkout();
 }
 
+db.Workout.create({ name: "Workout" })
+.then(dbWorkout => {
+  console.log(dbWorkout);
+})
+.catch(({message}) => {
+  console.log(message);
+});
+
 async function createANewWorkout() {
+
   let workout = await API.createWorkout();
   location.replace(`/exercise?id=${workout.id}`);
 }

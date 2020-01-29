@@ -30,6 +30,16 @@ var MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost/workout";
 mongoose.connect(MONGODB_URI,options)
 
 
+
+db.Workout.create({ name: "Workout" })
+  .then(dbWorkout => {
+    console.log(dbWorkout);
+  })
+  .catch(({message}) => {
+    console.log(message);
+  });
+
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
