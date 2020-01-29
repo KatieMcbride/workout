@@ -20,7 +20,7 @@ app.use(userApiRoute);
 
 
 
-var MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost/Workout";
+var MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost/workout";
 
 const options = {
   useNewUrlParser: true,
