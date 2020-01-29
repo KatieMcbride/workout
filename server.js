@@ -19,25 +19,15 @@ app.use(htmlRoute);
 app.use(userApiRoute);
 
 
-
 var MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost/workout";
+  const options = {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    family: 4 // Use IPv4, skip trying IPv6
+  };
 
-const options = {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-  family: 4 // Use IPv4, skip trying IPv6
-};
 mongoose.connect(MONGODB_URI,options)
-
-
-db.Workout.create({ name: "Workout" })
-  .then(dbWorkout => {
-    console.log(dbWorkout);
-  })
-  .catch(({message}) => {
-    console.log(message);
-  });
 
 
 // Start the server
