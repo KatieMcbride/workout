@@ -32,10 +32,10 @@ async function init() {
 }
 
 
-function createANewWorkout() {
-  let workout = await API.createWorkout();
-  location.replace(`/exercise?id=${workout.id}`);
-}
+// async function createANewWorkout() {
+//   let workout = await API.createWorkout();
+//   location.replace(`/exercise?id=${workout.id}`);
+// }
 
 function handleWorkoutTypeChange(event) {
   workoutType = event.target.value;
