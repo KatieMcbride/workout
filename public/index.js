@@ -29,11 +29,10 @@ async function init() {
       newWorkout.classList.add("")
     }
   }
-  // createANewWorkout();
 }
 
 
-async function createANewWorkout() {
+function createANewWorkout() {
   let workout = await API.createWorkout();
   location.replace(`/exercise?id=${workout.id}`);
 }

@@ -18,26 +18,24 @@ app.use(express.json());
 app.use(htmlRoute);
 app.use(userApiRoute);
 
+mongoose.Promise = global.Promise;
 
-var MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost/workout";
-  const options = {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    family: 4 // Use IPv4, skip trying IPv6
-  };
-
-mongoose.connect(MONGODB_URI,options)
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://workoutTracker: Ktbuh165!@ds315359.mlab.com:15359/heroku_lh61l3h6",
+  {
+    useMongoClient: true
+  }
+);
 
 
 
 db.Workout.create({ name: "Workout" })
-  .then(dbWorkout => {
-    console.log(dbWorkout);
-  })
-  .catch(({message}) => {
-    console.log(message);
-  });
+.then(dbWorkout => {
+  console.log(dbWorkout);
+})
+.catch(({message}) => {
+  console.log(message);
+}); 
 
 
 // Start the server
